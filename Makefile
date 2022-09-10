@@ -14,7 +14,7 @@ tarai-go.exe : tarai-go.go
 	go build -o $@ $<
 
 tarai-zig.exe : tarai-zig.zig
-	zig build-exe -Drelease-fast --name tarai-zig $<
+	zig build-exe -O ReleaseFast --name tarai-zig $<
 
 tarai-rust.exe : tarai-rust.rs
 	rustc -O -o $@ $<
