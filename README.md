@@ -26,3 +26,4 @@ real    2.386
 system  0.000
 user    2.375
 ```
+Windows 64bit Ryzen 5 3500U, 32GB RAM
