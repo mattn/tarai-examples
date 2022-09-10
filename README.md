@@ -1,6 +1,6 @@
 # tarai
 
-Codes for benchmarks in personaly for interest.
+Codes for benchmarks in personaly interest.
 
 https://sumim.hatenablog.com/entry/2022/09/08/173557
 
