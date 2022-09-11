@@ -2,7 +2,7 @@ ifeq ($(OS),Windows_NT)
 EXT = .exe
 TIME = w32time
 else
-TIME = time
+TIME = time -p
 endif
 
 TARGETS = \
@@ -24,7 +24,7 @@ tarai-zig$(EXT) : tarai-zig.zig
 	zig build-exe -O ReleaseFast --name tarai-zig $<
 
 tarai-rust$(EXT) : tarai-rust.rs
-	rustc -O -o $@ $<
+	rustc -O -C opt-level=3 -o $@ $<
 
 clean :
 	rm -f *.exe $(TARGETS)
