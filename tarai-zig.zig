@@ -9,5 +9,14 @@ fn tarai(x: i32, y: i32, z: i32) i32 {
 }
 
 pub fn main() !void {
-    try std.io.getStdOut().writer().print("{}\n", .{tarai(14, 7, 0)});
+    var allocator = std.heap.page_allocator;
+    var args = try std.process.argsAlloc(allocator);
+    defer std.process.argsFree(allocator, args);
+    if (args.len != 4) {
+        std.process.exit(1);
+    }
+    var x = try std.fmt.parseInt(i32, args[1], 10);
+    var y = try std.fmt.parseInt(i32, args[2], 10);
+    var z = try std.fmt.parseInt(i32, args[3], 10);
+    try std.io.getStdOut().writer().print("{}\n", .{tarai(x, y, z)});
 }
