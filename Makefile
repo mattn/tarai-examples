@@ -12,6 +12,8 @@ TARGETS = \
 	tarai-rust$(EXT) \
 
 
+ARGS = 14 7 0
+
 all : $(TARGETS)
 
 tarai-c$(EXT) : tarai-c.c
@@ -31,10 +33,10 @@ clean :
 
 test:
 	@echo ==== C
-	@$(TIME) ./tarai-c$(EXT)
+	@$(TIME) ./tarai-c$(EXT) $(ARGS)
 	@echo ==== Go
-	@$(TIME) ./tarai-go$(EXT)
+	@$(TIME) ./tarai-go$(EXT) $(ARGS)
 	@echo ==== Zig
-	@$(TIME) ./tarai-zig$(EXT)
+	@$(TIME) ./tarai-zig$(EXT) $(ARGS)
 	@echo ==== Rust
-	@$(TIME) ./tarai-rust$(EXT)
+	@$(TIME) ./tarai-rust$(EXT) $(ARGS)
