@@ -1,22 +1,29 @@
+ifeq ($(OS),Windows_NT)
+EXT = .exe
+TIME = w32time
+else
+TIME = time
+endif
+
 TARGETS = \
-	tarai-c.exe \
-	tarai-go.exe \
-	tarai-zig.exe \
-	tarai-rust.exe \
+	tarai-c$(EXT) \
+	tarai-go$(EXT) \
+	tarai-zig$(EXT) \
+	tarai-rust$(EXT) \
 
 
 all : $(TARGETS)
 
-tarai-c.exe : tarai-c.c
+tarai-c$(EXT) : tarai-c.c
 	gcc -O3 $< -o $@
 
-tarai-go.exe : tarai-go.go
+tarai-go$(EXT) : tarai-go.go
 	go build -o $@ $<
 
-tarai-zig.exe : tarai-zig.zig
+tarai-zig$(EXT) : tarai-zig.zig
 	zig build-exe -O ReleaseFast --name tarai-zig $<
 
-tarai-rust.exe : tarai-rust.rs
+tarai-rust$(EXT) : tarai-rust.rs
 	rustc -O -o $@ $<
 
 clean :
@@ -24,10 +31,10 @@ clean :
 
 test:
 	@echo ==== C
-	@w32time .\tarai-c.exe
+	$(TIME) ./tarai-c$(EXT)
 	@echo ==== Go
-	@w32time .\tarai-go.exe
+	@$(TIME) ./tarai-go$(EXT)
 	@echo ==== Zig
-	@w32time .\tarai-zig.exe
+	@$(TIME) ./tarai-zig$(EXT)
 	@echo ==== Rust
-	@w32time .\tarai-rust.exe
+	@$(TIME) ./tarai-rust$(EXT)
