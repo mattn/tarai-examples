@@ -31,7 +31,7 @@ clean :
 
 test:
 	@echo ==== C
-	$@(TIME) ./tarai-c$(EXT)
+	@$(TIME) ./tarai-c$(EXT)
 	@echo ==== Go
 	@$(TIME) ./tarai-go$(EXT)
 	@echo ==== Zig
